@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "aci-nac-test"
+		},
+		{
+			"path": "aci-nxos-test"
+		}
+	]
+}

@@ -1,0 +1,105 @@
+---
+
+   
+
+apic:
+  tenants:
+    - name: Flintstone
+
+
+      vrfs:
+        - name: Nonexp.inside-vrf
+          enforcement_preference: enforced
+      l3outs:
+        - name: kubernetes-cluster1
+          ndo_managed: false
+          vrf: Nonexp.inside-vrf
+          domain: EXT-L3
+          l3_multicast_ipv4: false
+          qos_class: unspecified
+          multipod: false
+          remote_leaf: false
+          import_route_control_enforcement: false
+          export_route_control_enforcement: true
+          
+          node_profiles:
+            - name: kubernetes-cluster1-node-profile
+
+              nodes:
+                - node_id: 101
+                  router_id: 10.1.1.241
+                  router_id_as_loopback: true
+        
+                - node_id: 102
+                  router_id: 10.1.1.242
+                  router_id_as_loopback: true
+
+              interface_profiles:
+                - name: kubernetes-cluster1-int-profile
+                  interfaces:
+                    - node_id: 101
+                      vlan: 200
+                      ip: "10.200.200.201/24"
+                      autostate: true
+                      floating_svi: true
+                      ip_shared: "10.200.200.1/24"
+                      paths:
+                        - floating_ip: 10.200.200.254/24
+                          physical_domain: EXT-L2-Domain
+                      bgp_peers:
+                        - ip: 10.200.200.0/24
+                          remote_as: 65500
+                          allow_self_as: false
+                          as_override: false
+                          disable_peer_as_check: false
+                          next_hop_self: false
+                          send_community: false
+                          send_ext_community: false
+                          allowed_self_as_count: 3
+                          bfd: false
+                          disable_connected_check: false
+                          ttl: 1
+                          remove_all_private_as: false
+                          remove_private_as: false
+                          replace_private_as_with_local_as: false
+                          unicast_address_family: true
+                          multicast_address_family: true
+                          admin_state: true
+                          as_propagate: none
+                    - node_id: 102
+                      vlan: 200
+                      ip: "10.200.200.202/24"
+                      autostate: true
+                      floating_svi: true
+                      ip_shared: "10.200.200.1/24"
+                      paths:
+                        - floating_ip: 10.200.200.254/24
+                          physical_domain: EXT-L2-Domain
+                      bgp_peers:
+                        - ip: 10.200.200.0/24
+                          remote_as: 65500
+                          allow_self_as: false
+                          as_override: false
+                          disable_peer_as_check: false
+                          next_hop_self: false
+                          send_community: false
+                          send_ext_community: false
+                          allowed_self_as_count: 3
+                          bfd: false
+                          disable_connected_check: false
+                          ttl: 1
+                          remove_all_private_as: false
+                          remove_private_as: false
+                          replace_private_as_with_local_as: false
+                          unicast_address_family: true
+                          multicast_address_family: true
+                          admin_state: true
+                          as_propagate: none                        
+
+      
+
+
+
+        
+
+    

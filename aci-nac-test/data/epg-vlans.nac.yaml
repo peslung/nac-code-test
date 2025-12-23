@@ -1,0 +1,57 @@
+---
+
+   
+
+apic:
+  tenants:
+    - name: Flintstone
+
+      bridge_domains:
+        - name: Flintstone-BD
+          ndo_managed: false
+          arp_flooding: true
+          advertise_host_routes: false
+          ip_dataplane_learning: true
+          clear_remote_mac_entries: false
+          limit_ip_learn_to_subnets: true
+          mac: "00:22:BD:F8:19:FF"
+          ep_move_detection: false
+          l3_multicast: false
+          multicast_arp_drop: false
+          multi_destination_flooding: bd-flood
+          unicast_routing: true
+          unknown_unicast: flood
+          unknown_ipv4_multicast: flood
+          unknown_ipv6_multicast: flood
+          vrf: Nonexp.inside-vrf
+          subnets:
+            - ip: 172.16.0.1/19
+              primary_ip: true
+              public: false
+              shared: false
+              virtual: false
+              igmp_querier: false
+              nd_ra_prefix: true
+              no_default_gateway: false
+
+      application_profiles:
+        - name: Flintstone
+          managed: true
+          ndo_managed: false
+          endpoint_groups:
+            - name: Fred-db
+              ndo_managed: false
+              flood_in_encap: false
+              intra_epg_isolation: false
+              preferred_group: false
+              proxy_arp: false
+              bridge_domain: Flintstone-BD
+              qos_class: unspecified
+            - name: Wilma-web
+              ndo_managed: false
+              flood_in_encap: false
+              intra_epg_isolation: false
+              preferred_group: false
+              proxy_arp: false
+              bridge_domain: Flintstone-BD
+              qos_class: unspecified              
