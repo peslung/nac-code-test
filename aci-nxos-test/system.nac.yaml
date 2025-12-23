@@ -1,8 +1,8 @@
 nxos:
   devices:
-    - name: Switch1
-      url: https://1.2.3.4
+    - name: PeterPan
+      url: https://sbx-nxos-mgmt.cisco.com
       configuration:
         system:
-          hostname: Switch1
+          hostname: Peter1
           mtu: 9216
