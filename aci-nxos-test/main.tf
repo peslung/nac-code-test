@@ -5,8 +5,8 @@ module "nxos" {
   source = "git::https://github.com/netascode/terraform-nxos-nac-nxos.git?ref=main"
 
 provider "nxos" {
-  username = "per-eilef.koslung"
-  password = "pAQ-e86_M4jr"
+  username = "admin-test"
+  password = "password"
   #url      = "https://sandboxapicdc.cisco.com"
 }
 
